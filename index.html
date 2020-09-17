@@ -1,7 +1,377 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="cs">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<!-- Set the viewport width to device width for mobile -->
+<meta name="viewport" content="width=device-width"/>
+<title>Chata Jestřabí - Úvodní stránka</title>
+<!-- CSS Files-->
+<link rel="stylesheet" href="stylesheets/style.css">
+<link rel="stylesheet" href="stylesheets/homepage.css"><!-- homepage stylesheet -->
+<link rel="stylesheet" href="stylesheets/skins/teal.css"><!-- skin color -->
+<link rel="stylesheet" href="stylesheets/responsive.css">
+<!-- IE Fix for HTML5 Tags -->
+<!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->    
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <!-- HIDDEN PANEL
+    ================================================== -->
+    <div id="panel">
+        <div class="row">
+            <div class="twelve columns">
+                <img src="images/info.png" class="pics" alt="info">
+                <div class="infotext">
+                    Rezervujte: 602 279 775 / info@ceskehory.cz (Ing. Aleš Vaníček)
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="slide">
+        <a href="#" class="btn-slide"></a>
+    </p>
+    <!-- HEADER
+    ================================================== -->
+    <div class="row">
+        <div class="four columns">
+            <div class="logo">
+                <a href="index.html"><h4>Chata Jestřabí</h4></a>
+            </div>
+        </div>
+        <div class="eight columns noleftmarg">
+            <nav id="nav-wrap">
+                <ul class="nav-bar sf-menu">
+
+                    <li class="current">
+                        <a href="index.html">Úvodní strana</a>
+                    </li>
+                    <li>
+                        <a href="ubytovani.html">Ubytování</a>
+                    </li>
+                    <li>
+                        <a href="cenik.html">Ceník</a>
+                    </li>
+                    <li>
+                        <a href="informace.html">Informace</a>
+                    </li>
+                    <li>
+                        <a href="kontakt.html">Kontakt</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="clear">
+    </div>
+   
+    <!-- SLIDER
+        ================================================== -->
+    <div id="ei-slider" class="ei-slider">
+        <ul class="ei-slider-large">
+            <li>
+                <img src="images/chata/pChata01-1400.jpg" alt="image01" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Vhodné pro</h2>
+                    <h3>party</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pChata05-1400.jpg" alt="image02" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>i pro rodiny s </h2>
+                    <h3>dětmi</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pChata03-1400.jpg" alt="image03" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Dostatek</h2>
+                    <h3>sněhu</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pInterier01-1400.jpg" alt="image04" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Nadmořská výška</h2>
+                    <h3>780</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pInterier02-1400.jpg" alt="image05" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Kapacita chaty</h2>
+                    <h3>33 osob</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pInterier03-1400.jpg" alt="image06" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Pokojů</h2>
+                    <h3>10</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pInterier06-1400.jpg" alt="image07" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>V blízkosti</h2>
+                    <h3>vleků</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pOkoli01-1400.jpg" alt="image08" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Neváhejte se nás</h2>
+                    <h3>zeptat</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pOkoli03-1400.jpg" alt="image09" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>Nádherné</h2>
+                    <h3>okolí</h3>
+                </div>
+            </li>
+            <li>
+                <img src="images/chata/pOkoli02-1400.jpg" alt="image10" class="responsiveslide">
+                <div class="ei-title">
+                    <h2>V blízkosti</h2>
+                    <h3>KRNAP</h3>
+                </div>
+            </li>
+        </ul>
+        <!-- slider-thumbs -->
+        <ul class="ei-slider-thumbs">
+            <li class="ei-slider-element">Current</li>
+            <li><a href="#">Slide 1</a><img src="images/chata/sChata01-150.png" class="slideshowthumb" alt="thumb01" /></li>
+            <li><a href="#">Slide 2</a><img src="images/chata/sChata05-150.png" class="slideshowthumb" alt="thumb02" /></li>
+            <li><a href="#">Slide 3</a><img src="images/chata/sChata03-150.png" class="slideshowthumb" alt="thumb03" /></li>
+            <li><a href="#">Slide 4</a><img src="images/chata/sInterier01-150.png" class="slideshowthumb" alt="thumb04" /></li>
+            <li><a href="#">Slide 5</a><img src="images/chata/sInterier02-150.png" class="slideshowthumb" alt="thumb05" /></li>
+            <li><a href="#">Slide 6</a><img src="images/chata/sInterier03-150.png" class="slideshowthumb" alt="thumb06" /></li>
+            <li><a href="#">Slide 7</a><img src="images/chata/sInterier06-150.png" class="slideshowthumb" alt="thumb07" /></li>
+            <li><a href="#">Slide 8</a><img src="images/chata/sOkoli01-150.png" class="slideshowthumb" alt="thumb08" /></li>
+            <li><a href="#">Slide 9</a><img src="images/chata/sOkoli03-150.png" class="slideshowthumb" alt="thumb09" /></li>
+            <li><a href="#">Slide 10</a><img src="images/chata/sOkoli02-150.png" class="slideshowthumb" alt="thumb10" /></li>
+        </ul>
+    </div>
+    <div class="minipause">
+    </div>
+    <!-- SUBHEADER
+    ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p class="text-center">
+                    "Tak co říkáš táto ? Có ? Říkám co říkáš tomu panorámatu ? Je to žrádló. Nó a co až budeme nahoře to teprv budou panorámata." - Homolka a Tobolka (1972)
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- ANIMATED COLUMNS
+    ================================================== -->
+    <div class="row">
+        <div class="twelve columns">
+            <ul class="ca-menu">
+                <li>
+                    <a href="ubytovani.html">
+                        <span class="ca-icon">O</span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Vhodné pro rodiny<br /> s dětmi i party</h2>
+                            <h3 class="ca-sub">Informace o ubytování</h3>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="ubytovani.html">
+                        <span class="ca-icon">R</span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Kapacita chaty<br /> 33 osob</h2>
+                            <h3 class="ca-sub">Informace o ubytování</h3>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="informace.html">
+                        <span class="ca-icon">I</span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">V nadmořské výšce <br /> 780 m</h2>
+                            <h3 class="ca-sub">Informace o okolí</h3>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="cenik.html">
+                        <span class="ca-icon">O</span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Ceny ubytování od<br /> 260 Kč osoba/noc <br />zimní sezóna</h2>
+                            <h3 class="ca-sub">Ceník ubytování</h3>
+                        </div>
+                    </a>
+                </li>
+				<li>
+                    <a href="#">
+                        <span class="ca-icon">B</span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Free<br /> WiFi</h2>
+                            <h3 class="ca-sub">přístup na internet</h3>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- CONTENT
+    ================================================== -->
+    <div class="row">
+        <div class="twelve columns">
+            <div class="centersectiontitle">
+                <h4>Proč jet k nám na Chatu Jestřabí:</h4>
+            </div>
+
+            <div class="six columns">
+                <h5>Atraktivní ubytování</h5>
+                <p>
+                    <ul class="circle">
+                        <li>Ubytovací kapacita až 33 osob</li>
+                        <li>10 pokojů (2-5 lůžkových)</li>
+                        <li>
+                            Více druhů pokojů dle potřeb klientů:
+                            <ul>
+                                <li>4x "Optimum" pokoj s kuchyňkou a soc. zařízením </li>
+                                <li>3x "Standard" pokoj se soc. zařízením </li>
+                                <li>3x "Basic" - soc. zařízením mimo pokoj</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Prostory pro zábavu a společné trávení času
+                            <ul>
+                                <li>Velká společenská místnost - Jídelna</li>
+                                <li>Malá společenská místnost s stolním fotbálkem</li>
+                                <li>Sklípek (pití si třeba přivést svoje :) )</li>
+                                <li>Posezení u krbových kamen</li>
+                                <li>Horní chodba - ideální prostor pro malé rošťáky</li>
+                            </ul>
+                        </li>
+                        <li>Velká společná kuchyň</li>
+                        <li>Satelitní TV s placenými kanály ve spol. místnosti</li>
+                        <li>Lyžárna</li>
+                        <li>Sušárna bot</li>
+                        <li>Možnost vlastního vaření</li>
+                        <li>Možnost konzumace vlastních dovezených potravin a nápojů</li>
+                        <li>Parkoviště u chaty a zdarma</li>
+                        <li>Možnost sáňkování před chatou</li>
+                    </ul>
+                </p>
+                <p>
+                    <a href="ubytovani.html" class="readmore">Další informace o ubytování</a>
+                </p>
+            </div>
+         
+            <div class="six columns">
+                <h5>Trvale nízké ceny</h5>
+                <p>
+                    <ul class="circle">
+                        <li>Zimní sezóna: Ceny od 260Kč/osoba/noc + poplatky obci</li>
+                        <li>Letní sezóna: Ceny od 150Kč/osoba/noc + poplatky obci</li>
+                        <li>
+                            Slevy na ubytování:
+                            <ul>
+                                <li>Děti do 3 let pobyt zdarma</li>
+                                <li>Děti do 6 let 50% sleva z pobytu</li>
+                                <li>Děti do 10 let 50% sleva z pobytu</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <a href="cenik.html" class="readmore">Ceník ubytování</a>
+                </p>
+
+                <p>
+                    
+                </p>
+                <br/>
+
+                <h5>Nádherná lokalita</h5>
+                <p>
+                    <ul class="circle">
+                        <li>Nadmořská výška 780 m</li>
+                        <li>V blízkosti KRNAP</li>
+                        <li>Příjemné prostředí venkova</li>
+                        <li>Vhodné i na procházky, kola a houbaření</li>
+                        <li>
+                            V dostupnosti skiareálů a bežeckých tras:
+                            <ul>
+                                <li><a href="http://mujweb.cz/vurmovka/">Vlek Vurmovka - nad naší chatou</a></li>
+                                <li><a href="http://www.jestrabivkrk.cz/index.php?mod=VLEK">Poma Jestřabí v Krkonoších (U Koniklece)</a></li>
+                                <li><a href="https://www.ceskehory.cz/ski-areal/ponikla-homole.html">Skiareál Homole (Poniklá) -  v létě přírodní koupaliště</a></li>
+                                <li><a href="http://www.skialdrov.cz/">Skiareál Aldrov</a></li>
+                                <li><a href="http://www.skiareal.cz/">Skiareál Špindlerův Mlýn / Medvědín -Horní Mísečky cca 11km</a></li>
+                                <li><a href="http://www.skiareal-rokytnice.cz/">Skiareál Rokytnice cca 11km</a></li>
+                                <li><a href="http://www.benecko.info/">Skiareál Benecko</a></li>
+                                <li><a href="http://www.skialdrov.cz/cs/Bezecke-trate-Krkonose-a-okoli-Krkonosska-magistrala.aspx">Běžecké tratě kolem Jestřabí v Krk. a Vítkovic v Krkonoších</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <a href="informace.html" class="readmore">Další informace o okolí</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr">
+    </div>
+    <!-- FOOOTER
+    ================================================== -->
+    <div id="footer">
+        <footer class="row">
+            <div class="twelve columns">
+                &copy;<span class="small"> Copyright 2015 D.V.D. TRIO, s.r.o. </span> <br />
+                <span class="small">Chata Jestřabí, Jestřabí v Krkonoších 32, 514 01 Jilemnice.  </span> <br />
+                <span class="small">Tel: +420 602 279 775, +420 602 366 536</span> <br />
+                <span class="small">Email: info@chatajestrabi.cz </span> <br />
+                <span class="small">Provozuje D.V.D. TRIO, s.r.o., Náchodská 2548/77, Horní Počernice, Praha 9, PSČ 193 00, IČ: 489 51 919. Společnost je zapsána v obchodním rejstříku vedeném Městským soudem v Praze oddíl C, vložka 30005.</span>
+            </div>
+        </footer>
+    </div>
+    <!-- JAVASCRIPTS
+    ================================================== -->
+    <!-- Javascript files placed here for faster loading -->
+    <script src="javascripts/foundation.min.js"></script>
+    <script src="javascripts/jquery.easing.1.3.js"></script>
+    <script src="javascripts/elasticslideshow.js"></script>
+    <script src="javascripts/jquery.carouFredSel-6.0.5-packed.js"></script>
+    <script src="javascripts/jquery.cycle.js"></script>
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/modernizr.foundation.js"></script>
+    <script src="javascripts/slidepanel.js"></script>
+    <script src="javascripts/scrolltotop.js"></script>
+    <script src="javascripts/hoverIntent.js"></script>
+    <script src="javascripts/superfish.js"></script>
+    <script src="javascripts/responsivemenu.js"></script>
+    <script src="javascripts/jquery.tweet.js"></script>
+    <script src="javascripts/twitterusername.js"></script>
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-60277131-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    
 </body>
 </html>
