@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#223328"/><path d="M16 6 L24 21 H8 Z" fill="#c98a3a"/><rect x="14" y="21" width="4" height="6" fill="#a9784f"/></svg>
+      Chata Jestřabí
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu" aria-expanded="false">
+      <span></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html"{% if page.nav == "uvod" %} aria-current="page"{% endif %}>Úvod</a>
+      <a href="ubytovani.html"{% if page.nav == "ubytovani" %} aria-current="page"{% endif %}>Ubytování</a>
+      <a href="cenik.html"{% if page.nav == "cenik" %} aria-current="page"{% endif %}>Ceník</a>
+      <a href="kontakt.html"{% if page.nav == "kontakt" %} aria-current="page"{% endif %}>Kontakt</a>
+    </nav>
+  </div>
+</header>

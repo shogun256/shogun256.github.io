@@ -1,0 +1,4 @@
+# Jekyll konfigurace pro GitHub Pages.
+# Šablony (_layouts, _includes) používá zatím jen nová verze webu ve složce test/.
+# Staré stránky v kořeni nemají front matter, Jekyll je proto kopíruje beze změny.
+title: Chata Jestřabí
