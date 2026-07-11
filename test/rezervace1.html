@@ -1,0 +1,133 @@
+---
+layout: default
+title: Rezervace — Chata Jestřabí
+description: Online poptávka rezervace ubytování na Chatě Jestřabí v Krkonoších. Kalendář volných termínů a rezervační formulář.
+nav: rezervace
+---
+<section class="subhero">
+  <div class="container">
+    <span class="eyebrow" style="color:#f0dfc0">Rezervace</span>
+    <h1>Rezervace ubytování</h1>
+    <p>Zkontrolujte volné termíny v kalendáři a pošlete nám nezávaznou poptávku. Rezervace je platná až po našem potvrzení emailem.</p>
+  </div>
+</section>
+
+<section class="section" id="obsazenost">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Volné termíny</span>
+      <h2>Kalendář obsazenosti</h2>
+      <p>Pokud je termín aspoň částečně obsazen, kalendář ukazuje, kolik kapacity zbývá. Bez záznamu je k dispozici celá chata.</p>
+    </div>
+    <div class="calendar-wrap">
+      <iframe loading="lazy" src="https://calendar.google.com/calendar/embed?src=069qljspj282t27evcgnqu17tk%40group.calendar.google.com&ctz=Europe/Prague" title="Kalendář obsazenosti Chata Jestřabí"></iframe>
+    </div>
+    <p style="margin-top:14px;font-size:0.88rem;text-align:center"><a href="https://calendar.google.com/calendar/embed?src=069qljspj282t27evcgnqu17tk%40group.calendar.google.com&ctz=Europe/Prague" target="_blank" rel="noopener">Problém se zobrazením kalendáře? Otevřít přímý odkaz →</a></p>
+  </div>
+</section>
+
+<section class="section section-alt" id="poptavka">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nezávazná poptávka</span>
+      <h2>Rezervační formulář</h2>
+      <p>Ozveme se vám zpět emailem s potvrzením volného termínu a ceny. Případné dotazy rádi zodpovíme i na tel. <a href="tel:+420602279775">602 279 775</a>.</p>
+    </div>
+
+    <form class="res-form" action="https://formsubmit.co/info@chatajestrabi.cz" method="POST">
+      <input type="hidden" name="_subject" value="Nová poptávka rezervace z webu chatajestrabi.cz">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://chatajestrabi.cz/test/rezervace-dekujeme.html">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="field">
+        <label for="prijezd">Datum příjezdu *</label>
+        <input type="date" id="prijezd" name="Příjezd" required>
+      </div>
+      <div class="field">
+        <label for="odjezd">Datum odjezdu *</label>
+        <input type="date" id="odjezd" name="Odjezd" required>
+      </div>
+
+      <div class="field">
+        <label for="typ">Typ ubytování *</label>
+        <select id="typ" name="Typ ubytování" required>
+          <option value="">— vyberte —</option>
+          <option>Pokoj Standard</option>
+          <option>Pokoj Optimum</option>
+          <option>Celá chata</option>
+          <option>Nevím, poraďte</option>
+        </select>
+      </div>
+      <div class="field field-split">
+        <div>
+          <label for="dospeli">Dospělí *</label>
+          <input type="number" id="dospeli" name="Počet dospělých" min="1" max="33" value="2" required>
+        </div>
+        <div>
+          <label for="deti">Děti</label>
+          <input type="number" id="deti" name="Počet dětí" min="0" max="20" value="0">
+        </div>
+      </div>
+
+      <div class="field field-full">
+        <label for="vekdeti">Věk dětí <span class="opt">(kvůli slevám — děti do 3, 6 a 10 let)</span></label>
+        <input type="text" id="vekdeti" name="Věk dětí" placeholder="např. 4 a 8 let">
+      </div>
+
+      <div class="field">
+        <label for="jmeno">Jméno a příjmení *</label>
+        <input type="text" id="jmeno" name="Jméno" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+
+      <div class="field field-full">
+        <label for="telefon">Telefon <span class="opt">(nepovinné, urychlí domluvu)</span></label>
+        <input type="tel" id="telefon" name="Telefon" autocomplete="tel">
+      </div>
+
+      <div class="field field-full">
+        <label for="zprava">Poznámka</label>
+        <textarea id="zprava" name="Zpráva" rows="4" placeholder="Cokoliv dalšího, co bychom měli vědět…"></textarea>
+      </div>
+
+      <p class="form-note" id="noc-info" hidden>Upozornění: minimální délka pobytu jsou 2 noci, kratší pobyt je s příplatkem 20&nbsp;%.</p>
+
+      <div class="field field-full">
+        <button type="submit" class="btn btn-primary">Odeslat poptávku</button>
+        <p class="form-note">Odesláním souhlasíte se zpracováním uvedených údajů za účelem vyřízení poptávky. Rezervace je platná až po našem potvrzení emailem.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+(function () {
+  var prijezd = document.getElementById('prijezd');
+  var odjezd = document.getElementById('odjezd');
+  var info = document.getElementById('noc-info');
+  if (!prijezd || !odjezd) return;
+  var dnes = new Date().toISOString().slice(0, 10);
+  prijezd.min = dnes;
+  odjezd.min = dnes;
+  function zkontroluj() {
+    if (!prijezd.value) return;
+    odjezd.min = prijezd.value;
+    if (odjezd.value && odjezd.value <= prijezd.value) {
+      odjezd.setCustomValidity('Datum odjezdu musí být po datu příjezdu.');
+    } else {
+      odjezd.setCustomValidity('');
+    }
+    if (prijezd.value && odjezd.value) {
+      var noci = (new Date(odjezd.value) - new Date(prijezd.value)) / 86400000;
+      info.hidden = !(noci > 0 && noci < 2);
+    }
+  }
+  prijezd.addEventListener('change', zkontroluj);
+  odjezd.addEventListener('change', zkontroluj);
+})();
+</script>

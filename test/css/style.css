@@ -804,6 +804,98 @@ tr:last-child td {
 .subhero h1 { color: #fff; }
 .subhero p { color: #dbe3d5; max-width: 620px; margin: 0 auto; }
 
+/* Reservation form */
+.res-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 22px;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+}
+
+.res-form .field-full {
+  grid-column: 1 / -1;
+}
+
+.res-form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+  color: var(--forest-dark);
+}
+
+.res-form label .opt {
+  font-weight: 400;
+  color: var(--text-soft);
+  font-size: 0.85em;
+}
+
+.res-form input,
+.res-form select,
+.res-form textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.res-form input:focus,
+.res-form select:focus,
+.res-form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+.res-form textarea {
+  resize: vertical;
+}
+
+.res-form .field-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.res-form .form-note {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin: 4px 0 0;
+}
+
+.res-form button {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.gform-placeholder {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--paper);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 48px 30px;
+  color: var(--text-soft);
+}
+
+.gform-placeholder h3 {
+  color: var(--forest-dark);
+  margin-bottom: 10px;
+}
+
 /* Responsive */
 @media (max-width: 860px) {
   .grid-2,
@@ -876,6 +968,11 @@ tr:last-child td {
   .stats {
     grid-template-columns: repeat(2, 1fr);
     margin-top: 24px;
+  }
+
+  .res-form {
+    grid-template-columns: 1fr;
+    padding: 22px 18px;
   }
 
   .teaser-media {
