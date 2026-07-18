@@ -34,6 +34,15 @@ nav: rezervace
       <p>Ozveme se vám zpět emailem s potvrzením volného termínu a ceny. Případné dotazy rádi zodpovíme i na tel. <a href="tel:+420602279775">602 279 775</a>.</p>
     </div>
 
+    <div class="kod-box" id="kod-box">
+      <label for="kod-hosta"><b>Byli jste u nás?</b> Zadejte kód hosta a načteme vaše údaje z minula:</label>
+      <div class="kod-radek">
+        <input type="text" id="kod-hosta" placeholder="CHJ-XXXXXX" autocomplete="off">
+        <button type="button" class="btn btn-ghost" id="kod-nacti">Načíst</button>
+      </div>
+      <p class="form-note" id="kod-stav" hidden></p>
+    </div>
+
     <form class="res-form" id="res3" action="https://script.google.com/macros/s/AKfycbyQq3LGZSZpA8L-GcLK2Y0HcE539CpHqIzW58rqz-daxMZmliSu1Z6MLGxu5WeH2mi9rA/exec" method="POST">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -130,6 +139,59 @@ nav: rezervace
   }
   prijezd.addEventListener('change', zkontroluj);
   odjezd.addEventListener('change', zkontroluj);
+
+  // ---- Načtení hosta podle kódu (JSONP na webovou aplikaci) ----
+  var kodPole = document.getElementById('kod-hosta');
+  var kodTlacitko = document.getElementById('kod-nacti');
+  var kodStav = document.getElementById('kod-stav');
+  var casovac = null;
+
+  window.chjNactiHosta = function (data) {
+    clearTimeout(casovac);
+    kodTlacitko.disabled = false;
+    kodTlacitko.textContent = 'Načíst';
+    if (!data || !data.ok) {
+      kodStav.textContent = 'Kód jsme nenašli. Zkontrolujte překlepy, nebo vyplňte formulář ručně.';
+      kodStav.hidden = false;
+      return;
+    }
+    document.getElementById('jmeno').value = data.jmeno || '';
+    document.getElementById('email').value = data.email || '';
+    document.getElementById('telefon').value = data.telefon || '';
+    if (data.typ) document.getElementById('typ').value = data.typ;
+    if (data.dospeli) document.getElementById('dospeli').value = data.dospeli;
+    if (data.deti) document.getElementById('deti').value = data.deti;
+    document.getElementById('vekdeti').value = data.vekdeti || '';
+    if (data.osoby && data.osoby.length) {
+      document.getElementById('zprava').value =
+        'Stejné osoby jako minule: ' + data.osoby.join(', ') + '.';
+    }
+    kodStav.textContent = 'Vítejte zpět! Váš minulý pobyt: ' + (data.posledni || '—') +
+      '. Údaje jsme předvyplnili — stačí vybrat nový termín.';
+    kodStav.hidden = false;
+    prijezd.focus();
+  };
+
+  function nactiKod(kod) {
+    kod = (kod || '').trim().toUpperCase();
+    if (!kod) return;
+    if (!form.action || form.action.indexOf('script.google.com') === -1) return;
+    kodTlacitko.disabled = true;
+    kodTlacitko.textContent = 'Načítám…';
+    kodStav.hidden = true;
+    var skript = document.createElement('script');
+    skript.src = form.action + '?kod=' + encodeURIComponent(kod) + '&callback=chjNactiHosta';
+    skript.onerror = function () { window.chjNactiHosta(null); };
+    document.body.appendChild(skript);
+    casovac = setTimeout(function () { window.chjNactiHosta(null); }, 12000);
+  }
+
+  kodTlacitko.addEventListener('click', function () { nactiKod(kodPole.value); });
+  kodPole.addEventListener('keydown', function (u) {
+    if (u.key === 'Enter') { u.preventDefault(); nactiKod(kodPole.value); }
+  });
+  var zAdresy = new URLSearchParams(window.location.search).get('kod');
+  if (zAdresy) { kodPole.value = zAdresy.toUpperCase(); nactiKod(zAdresy); }
 
   form.addEventListener('submit', function (udalost) {
     udalost.preventDefault();
