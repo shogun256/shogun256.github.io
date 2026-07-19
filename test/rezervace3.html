@@ -96,6 +96,14 @@ nav: rezervace
       </div>
 
       <div class="field field-full">
+        <label>Ubytované osoby <span class="opt">(nepovinné — lze doplnit i později)</span></label>
+        <div id="osoby-seznam"></div>
+        <button type="button" class="btn btn-ghost" id="osoba-pridat" style="padding:8px 18px;font-size:0.85rem">+ Přidat osobu</button>
+        <input type="hidden" name="osoby" id="osoby-json">
+        <input type="hidden" name="kod" id="kod-skryty">
+      </div>
+
+      <div class="field field-full">
         <label for="zprava">Poznámka</label>
         <textarea id="zprava" name="zprava" rows="4" placeholder="Cokoliv dalšího, co bychom měli vědět…"></textarea>
       </div>
@@ -140,6 +148,45 @@ nav: rezervace
   prijezd.addEventListener('change', zkontroluj);
   odjezd.addEventListener('change', zkontroluj);
 
+  // ---- Ubytované osoby (volitelné řádky) ----
+  var seznamOsob = document.getElementById('osoby-seznam');
+  var KATEGORIE = ['dospělý', 'student', 'do 18 let', 'dítě do 10 let',
+    'dítě do 6 let', 'dítě do 3 let', 'přistýlka', 'ZTP'];
+
+  function pridejOsobu() {
+    var radekOsoby = document.createElement('div');
+    radekOsoby.className = 'osoba-radek';
+    var moznosti = '';
+    for (var i = 0; i < KATEGORIE.length; i++) {
+      moznosti += '<option>' + KATEGORIE[i] + '</option>';
+    }
+    radekOsoby.innerHTML =
+      '<input type="text" data-o="p" placeholder="Příjmení">' +
+      '<input type="text" data-o="j" placeholder="Jméno">' +
+      '<select data-o="k">' + moznosti + '</select>' +
+      '<input type="text" data-o="r" placeholder="Ročník" size="6">' +
+      '<button type="button" class="osoba-smazat" aria-label="Odebrat osobu">&times;</button>';
+    radekOsoby.querySelector('.osoba-smazat').addEventListener('click', function () {
+      radekOsoby.remove();
+    });
+    seznamOsob.appendChild(radekOsoby);
+    return radekOsoby;
+  }
+  document.getElementById('osoba-pridat').addEventListener('click', pridejOsobu);
+
+  function serializujOsoby() {
+    var vysledek = [];
+    var radky = seznamOsob.querySelectorAll('.osoba-radek');
+    for (var i = 0; i < radky.length; i++) {
+      var o = {};
+      radky[i].querySelectorAll('[data-o]').forEach(function (pole) {
+        o[pole.getAttribute('data-o')] = pole.value.trim();
+      });
+      if (o.p || o.j) vysledek.push(o);
+    }
+    document.getElementById('osoby-json').value = vysledek.length ? JSON.stringify(vysledek) : '';
+  }
+
   // ---- Načtení hosta podle kódu (JSONP na webovou aplikaci) ----
   var kodPole = document.getElementById('kod-hosta');
   var kodTlacitko = document.getElementById('kod-nacti');
@@ -156,18 +203,15 @@ nav: rezervace
       return;
     }
     document.getElementById('jmeno').value = data.jmeno || '';
-    document.getElementById('email').value = data.email || '';
-    document.getElementById('telefon').value = data.telefon || '';
     if (data.typ) document.getElementById('typ').value = data.typ;
     if (data.dospeli) document.getElementById('dospeli').value = data.dospeli;
     if (data.deti) document.getElementById('deti').value = data.deti;
-    document.getElementById('vekdeti').value = data.vekdeti || '';
-    if (data.osoby && data.osoby.length) {
-      document.getElementById('zprava').value =
-        'Stejné osoby jako minule: ' + data.osoby.join(', ') + '.';
-    }
+    document.getElementById('kod-skryty').value = kodPole.value.trim().toUpperCase();
+    var osobyText = (data.osoby && data.osoby.length)
+      ? ' Osoby z minula (' + data.osoby.join(', ') + ') převezmeme automaticky — vyplňte je níže jen v případě změn.'
+      : '';
     kodStav.textContent = 'Vítejte zpět! Váš minulý pobyt: ' + (data.posledni || '—') +
-      '. Údaje jsme předvyplnili — stačí vybrat nový termín.';
+      '. Vyberte nový termín a doplňte svůj email a telefon.' + osobyText;
     kodStav.hidden = false;
     prijezd.focus();
   };
@@ -196,6 +240,7 @@ nav: rezervace
   form.addEventListener('submit', function (udalost) {
     udalost.preventDefault();
     chyba.hidden = true;
+    serializujOsoby();
     if (!form.reportValidity()) return;
     if (!form.action || form.action.indexOf('script.google.com') === -1) {
       chyba.textContent = 'Tato zkušební varianta ještě není propojena s Google skriptem.';
