@@ -215,6 +215,8 @@ nav: rezervace
       return;
     }
     document.getElementById('jmeno').value = data.jmeno || '';
+    document.getElementById('email').value = data.email || '';
+    document.getElementById('telefon').value = data.telefon || '';
     if (data.typ) document.getElementById('typ').value = data.typ;
     if (data.dospeli) document.getElementById('dospeli').value = data.dospeli;
     if (data.deti) document.getElementById('deti').value = data.deti;
@@ -226,7 +228,7 @@ nav: rezervace
       osobyText = ' Osoby z minula jsme předvyplnili níže — upravte je jen v případě změn.';
     }
     kodStav.textContent = 'Vítejte zpět! Váš minulý pobyt: ' + (data.posledni || '—') +
-      '. Vyberte nový termín a doplňte svůj email a telefon.' + osobyText;
+      '. Vaše údaje jsme předvyplnili — stačí vybrat nový termín pobytu.' + osobyText;
     kodStav.hidden = false;
     prijezd.focus();
   };
