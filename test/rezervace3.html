@@ -153,7 +153,7 @@ nav: rezervace
   var KATEGORIE = ['dospělý', 'student', 'do 18 let', 'dítě do 10 let',
     'dítě do 6 let', 'dítě do 3 let', 'přistýlka', 'ZTP'];
 
-  function pridejOsobu() {
+  function pridejOsobu(predvypln) {
     var radekOsoby = document.createElement('div');
     radekOsoby.className = 'osoba-radek';
     var moznosti = '';
@@ -169,10 +169,22 @@ nav: rezervace
     radekOsoby.querySelector('.osoba-smazat').addEventListener('click', function () {
       radekOsoby.remove();
     });
+    if (predvypln) {
+      radekOsoby.querySelectorAll('[data-o]').forEach(function (pole) {
+        var klic = pole.getAttribute('data-o');
+        if (predvypln[klic] != null && predvypln[klic] !== '') {
+          if (pole.tagName === 'SELECT') {
+            if (KATEGORIE.indexOf(predvypln[klic]) >= 0) pole.value = predvypln[klic];
+          } else {
+            pole.value = predvypln[klic];
+          }
+        }
+      });
+    }
     seznamOsob.appendChild(radekOsoby);
     return radekOsoby;
   }
-  document.getElementById('osoba-pridat').addEventListener('click', pridejOsobu);
+  document.getElementById('osoba-pridat').addEventListener('click', function () { pridejOsobu(); });
 
   function serializujOsoby() {
     var vysledek = [];
@@ -207,9 +219,12 @@ nav: rezervace
     if (data.dospeli) document.getElementById('dospeli').value = data.dospeli;
     if (data.deti) document.getElementById('deti').value = data.deti;
     document.getElementById('kod-skryty').value = kodPole.value.trim().toUpperCase();
-    var osobyText = (data.osoby && data.osoby.length)
-      ? ' Osoby z minula (' + data.osoby.join(', ') + ') převezmeme automaticky — vyplňte je níže jen v případě změn.'
-      : '';
+    var osobyText = '';
+    if (data.osoby && data.osoby.length) {
+      seznamOsob.innerHTML = '';
+      for (var i = 0; i < data.osoby.length; i++) pridejOsobu(data.osoby[i]);
+      osobyText = ' Osoby z minula jsme předvyplnili níže — upravte je jen v případě změn.';
+    }
     kodStav.textContent = 'Vítejte zpět! Váš minulý pobyt: ' + (data.posledni || '—') +
       '. Vyberte nový termín a doplňte svůj email a telefon.' + osobyText;
     kodStav.hidden = false;
